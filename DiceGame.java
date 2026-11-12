@@ -25,13 +25,17 @@ public class DiceGame {
                 DiceGame diceGame = new DiceGame();
 
                 welcomeHeading();
+                showGameInstructions();
 
                 boolean playAgain = true;
 
                 while (playAgain) {
-                        int numberOfRounds = diceGame.scanner.readIntInRange("\nHow many rounds do you want to play? ", 1,
+                        int numberOfRounds = diceGame.scanner.readIntInRange("\nHow many rounds do you want to play? ",
+                                        1,
                                         Integer.MAX_VALUE);
-                        int numberOfSides = diceGame.scanner.readIntInRange("\nThe die cannot have less than 2 sides. How many sides should the die have? ", 2,
+                        int numberOfSides = diceGame.scanner.readIntInRange(
+                                        "\nThe die cannot have less than 2 sides. How many sides should the die have? ",
+                                        2,
                                         Integer.MAX_VALUE);
                         String playerName = diceGame.scanner.readName("\nWhat is your name? ");
 
@@ -54,7 +58,14 @@ public class DiceGame {
 
         private static void welcomeHeading() {
                 System.out.println(TerminalColors.CYAN
-                                + "\n================ Welcome to dice game! ================"
+                                + "\n================================================================ Welcome to dice game! ================================================================"
+                                + TerminalColors.RESET);
+        }
+
+        private static void showGameInstructions() {
+                System.out.println(TerminalColors.YELLOW
+                                + "Choose how many rounds you want to play and how many sides the die should have. "
+                                + "Guess the die's value to earn points, and try to reach 10 points to win."
                                 + TerminalColors.RESET);
         }
 }
