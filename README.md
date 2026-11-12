@@ -8,7 +8,7 @@ Ett textbaserat tärningsspel skrivet i Java. Du väljer hur många rundor du vi
 
 ## Kör spelet
 1. Öppna projektmappen **DiceGames** på din dator.
-   1. Om du behöver starta spelet manuellt klistra in  i terminalen
+   1. Om du behöver starta spelet manuellt i VSCode klistra in `chcp 65001` i terminalen
 2. Dubbelklicka på filen `run-game.bat`.
 3. Följ instruktionerna i spelet:
    1. Välj hur många rundor du vill spela.

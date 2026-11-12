@@ -54,7 +54,7 @@ public class DiceGame {
 
         private static void welcomeHeading() {
                 System.out.println(TerminalColors.CYAN
-                                + "\n================ welcome to dice game! ================"
+                                + "\n================ Welcome to dice game! ================"
                                 + TerminalColors.RESET);
         }
 }
