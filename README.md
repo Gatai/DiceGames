@@ -11,7 +11,7 @@ Ett textbaserat tärningsspel skrivet i Java. Du väljer hur många rundor du vi
    1. Om du behöver starta spelet manuellt i VSCode klistra in `chcp 65001` i terminalen
 2. Dubbelklicka på filen `run-game.bat`.
 3. Följ instruktionerna i spelet:
-   1. Välj hur många rundor du vill spela.
+   1. Välj hur många rundor du vill spela, för att vinna ska du uppnå 10 poäng. 
    2. Välj hur många sidor tärningen ska ha. Tärningen måste ha minst två sidor.
    3. Ange ditt namn.
    4. Gissa ett tal mellan 1 och det valda antalet sidor. Varje korrekt gissning ger 1 poäng.
