@@ -88,7 +88,7 @@ public class GameStart {
      */
     private static void showFinalScore(Player player, int numberOfRounds) {
         System.out.println(
-                "\nGame over! Your final score is: " + player.getScore() + " points out of " + numberOfRounds
+                "\nYour final score is: " + player.getScore() + " points out of " + numberOfRounds
                         + " rounds.");
     }
 
