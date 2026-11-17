@@ -41,7 +41,7 @@ public class DiceGame {
 
                         // Create the player and die using the chosen settings.
                         Player player = new Player(playerName);
-                        Die die = new Die(numberOfSides);
+                        player.addDie(numberOfSides);
 
                         // Show the player a summary of the game.
                         System.out.println(
@@ -50,7 +50,8 @@ public class DiceGame {
                                                         + " rounds with a " + numberOfSides + " sided die."
                                                         + TerminalColors.RESET);
 
-                        playAgain = GameStart.playRound(diceGame.getPlayerInput(), player, die, numberOfRounds);
+                        playAgain = GameStart.playRound(diceGame.getPlayerInput(), player,
+                                        numberOfRounds);
 
                 }
                 diceGame.getPlayerInput().scannerClose();
