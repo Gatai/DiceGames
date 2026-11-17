@@ -17,21 +17,16 @@ public class GameStart {
      * @return {@code true} if the player wants to play again; otherwise
      *         {@code false}
      */
-    public static boolean playRound(PlayerInput playerInput, Player player, Die die, int numberOfRounds) {
-        int roundsPlayed = 1;
-        boolean winner = false;
+    public static boolean playRound(PlayerInput playerInput, Player player, int numberOfSides, int numberOfRounds) {
 
-        while (roundsPlayed <= numberOfRounds && !winner) {
-            showRoundStatus(player, roundsPlayed, numberOfRounds);
-            int guess = readGuess(playerInput, die);
-            winner = aSingleRound(guess, die, player);
-            roundsPlayed++;
+        for (int round = 0; round < numberOfRounds; round++) {
+            showRoundStatus(player, round + 1, numberOfRounds);
+            int guess = readGuess(playerInput, numberOfSides);
+            aSingleRound(guess, player);
         }
 
-        if (!winner) {
-            showFinalScore(player, numberOfRounds);
-        }
-
+        showFinalScore(player, numberOfRounds);
+        checkWinner(player);
         return askToPlayAgain(playerInput);
     }
 
@@ -56,10 +51,10 @@ public class GameStart {
      * @param die         die whose number of sides determines the valid range
      * @return the player's valid guess
      */
-    private static int readGuess(PlayerInput playerInput, Die die) {
+    private static int readGuess(PlayerInput playerInput, int numberOfSides) {
         return playerInput.readIntInRange(
-                "Guess a number between 1 and " + die.getNumberOfSides() + ": ",
-                1, die.getNumberOfSides());
+                "Guess a number between 1 and " + numberOfSides + ": ",
+                1, numberOfSides);
     }
 
     /**
@@ -70,10 +65,10 @@ public class GameStart {
      * @param die    die to roll
      * @param player player whose score may be increased
      */
-    private static boolean aSingleRound(int guess, Die die, Player player) {
-        die.roll();
+    private static void aSingleRound(int guess, Player player) {
+        player.rollDice();
 
-        int diceValue = die.getCurrentValue();
+        int diceValue = player.getDieValue();
         System.out.println(TerminalColors.CYAN + "\nThe dice landed on: " + diceValue + TerminalColors.RESET);
 
         if (guess == diceValue) {
@@ -82,9 +77,6 @@ public class GameStart {
         } else {
             System.out.println(TerminalColors.RED + "You guessed incorrectly!" + TerminalColors.RESET);
         }
-
-        return checkWinner(player);
-
     }
 
     /**
@@ -120,40 +112,43 @@ public class GameStart {
                 return false;
             }
 
-            System.out.println(TerminalColors.RED + "Invalid answer. Please enter yes (y) or no (n)." + TerminalColors.RESET);
+            System.out.println(
+                    TerminalColors.RED + "Invalid answer. Please enter yes (y) or no (n)." + TerminalColors.RESET);
         }
     }
 
     /**
-    *  Added a method to check if the player has won the game by reaching a score of 10 or more.
-    *  @param player the player whose score is checked
-    *  @return true if the player has won, false otherwise
-    */ 
+     * Added a method to check if the player has won the game by reaching a score of
+     * 10 or more.
+     * 
+     * @param player the player whose score is checked
+     * @return true if the player has won, false otherwise
+     */
     public static boolean checkWinner(Player player) {
         if (player.getScore() >= 10) {
             System.out.println(
-        "  .      .       .       .       .       .       .       .       .\n" +
-        "    \\  |  /        \\  |  /        \\  |  /        \\  |  /        \\  |  /\n" +
-        "  --  ★ ★  --    --  ★ ★  --    --  ★ ★  --    --  ★ ★  --    --  ★ ★  --\n" +
-        "    /  |  \\        /  |  \\        /  |  \\        /  |  \\        /  |  \\\n" +
-        " .      .       .       .       .       .       .       .       .\n" +
-        "\n" +
-        "  ██╗       ██╗██╗ ██████╗████████╗ ██████╗ ██████╗ ██╗   ██╗██╗██╗██╗\n" +
-        "  ╚██╗     ██╔╝██║██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗╚██╗ ██╔╝██║██║██║\n" +
-        "   ╚██╗   ██╔╝ ██║██║        ██║   ██║   ██║██████╔╝ ╚████╔╝ ██║██║██║\n" +
-        "    ╚██╗ ██╔╝  ██║██║        ██║   ██║   ██║██╔══██╗  ╚██╔╝  ╚═╝╚═╝╚═╝\n" +
-        "     ╚████╔╝   ██║╚██████╗   ██║   ╚██████╔╝██║  ██║   ██║   ██╗██╗██╗\n" +
-        "      ╚══╝     ╚═╝ ╚═════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝╚═╝\n" +
-        "\n" +
-        " .      .       .       .       .       .       .       .       .\n" +
-        "    \\  |  /        \\  |  /        \\  |  /        \\  |  /        \\  |  /\n" +
-        "  --  ★ ★  --    --  ★ ★  --    --  ★ ★  --    --  ★ ★  --    --  ★ ★  --\n" +
-        "    /  |  \\        /  |  \\        /  |  \\        /  |  \\        /  |  \\\n" +
-        "  .      .       .       .       .       .       .       .       ."
-            );
-            System.out.println(TerminalColors.GREEN + "Congratulations, " + player.getName() + "! You won the game with a score of " + player.getScore() + "!" + TerminalColors.RESET);
+                    "  .      .       .       .       .       .       .       .       .\n" +
+                            "    \\  |  /        \\  |  /        \\  |  /        \\  |  /        \\  |  /\n" +
+                            "  --  ★ ★  --    --  ★ ★  --    --  ★ ★  --    --  ★ ★  --    --  ★ ★  --\n" +
+                            "    /  |  \\        /  |  \\        /  |  \\        /  |  \\        /  |  \\\n" +
+                            " .      .       .       .       .       .       .       .       .\n" +
+                            "\n" +
+                            "  ██╗       ██╗██╗ ██████╗████████╗ ██████╗ ██████╗ ██╗   ██╗██╗██╗██╗\n" +
+                            "  ╚██╗     ██╔╝██║██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗╚██╗ ██╔╝██║██║██║\n" +
+                            "   ╚██╗   ██╔╝ ██║██║        ██║   ██║   ██║██████╔╝ ╚████╔╝ ██║██║██║\n" +
+                            "    ╚██╗ ██╔╝  ██║██║        ██║   ██║   ██║██╔══██╗  ╚██╔╝  ╚═╝╚═╝╚═╝\n" +
+                            "     ╚████╔╝   ██║╚██████╗   ██║   ╚██████╔╝██║  ██║   ██║   ██╗██╗██╗\n" +
+                            "      ╚══╝     ╚═╝ ╚═════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝╚═╝\n" +
+                            "\n" +
+                            " .      .       .       .       .       .       .       .       .\n" +
+                            "    \\  |  /        \\  |  /        \\  |  /        \\  |  /        \\  |  /\n" +
+                            "  --  ★ ★  --    --  ★ ★  --    --  ★ ★  --    --  ★ ★  --    --  ★ ★  --\n" +
+                            "    /  |  \\        /  |  \\        /  |  \\        /  |  \\        /  |  \\\n" +
+                            "  .      .       .       .       .       .       .       .       .");
+            System.out.println(TerminalColors.GREEN + "Congratulations, " + player.getName()
+                    + "! You won the game with a score of " + player.getScore() + "!" + TerminalColors.RESET);
             return true;
-        } 
+        }
         return false;
     }
 }

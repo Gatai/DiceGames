@@ -50,20 +50,16 @@ public class Player {
     }
 
     /**
-     * Sets the players score.
-     *
-     * @param score the new score
-     */
-    public void setScore(int score) {
-        this.score = score;
-    }
-
-    /**
      * Increases the players score by one point.
      */
     public void increaseScore() {
         score++;
     }
+
+    // TODO: skriv kommentar
+    // public int getNumberOfSides() {
+    // return die.getNumberOfSides();
+    // }
 
     /**
      * Creates and associates a die with the given number of sides.
@@ -77,8 +73,7 @@ public class Player {
     /**
      * Rolls the die associated with this player.
      */
-    public void rollDie() {
+    public void rollDice() {
         die.roll();
     }
-
 }

@@ -31,10 +31,11 @@ Sätt status till **Godkänd** eller **Underkänd** efter att testet har körts.
 | ID   | Testfall                      | Indata               | Förväntat resultat           | Status |
 | ---- | ----------------------------- | -------------------- | ---------------------------- | ------ |
 | T-11 | Begränsat antal rundor        | 1 runda              | Spelet avslutas efter rundan | ✅     |
-| T-12 | Vinst vid 10 poäng            | Nå 10 poäng          | Vinnarmeddelande visas       | ✅     |
+| T-12 | Vinst vid minst 10 poäng      | Nå 10 poäng          | Vinnarmeddelande visas efter sista rundan | Ej körd |
 | T-13 | Ogiltigt svar på "Spela igen" | `kanske`, sedan `no` | Frågan ställs på nytt        | ✅     |
 | T-14 | Spela igen                    | `yes` eller `y`      | Ny spelomgång startar        | ✅     |
 | T-15 | Avsluta spelet                | `no` eller `n`       | Spelet avslutas              | ✅     |
+| T-16 | Fortsätt efter 10 poäng       | Nå 10 poäng före sista rundan | Alla valda rundor spelas innan vinnarmeddelandet visas | Ej körd |
 
 ## Begränsningar
 
