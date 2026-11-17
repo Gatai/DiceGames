@@ -56,10 +56,14 @@ public class Player {
         score++;
     }
 
-    // TODO: skriv kommentar
-    // public int getNumberOfSides() {
-    // return die.getNumberOfSides();
-    // }
+    /**
+     * Returns the number of sides on this players die.
+     * 
+     * @return teh number of sides on the players die.
+     */
+    public int getNumberOfSides() {
+        return die.getNumberOfSides();
+    }
 
     /**
      * Creates and associates a die with the given number of sides.

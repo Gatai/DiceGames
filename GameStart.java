@@ -5,6 +5,7 @@ import Helper.TerminalColors;
  * The brain of the game 🧠
  */
 public class GameStart {
+    private static final int WINNING_SCORE = 10;
 
     /**
      * Plays the requested number of rounds, displays the final score, and asks
@@ -17,11 +18,11 @@ public class GameStart {
      * @return {@code true} if the player wants to play again; otherwise
      *         {@code false}
      */
-    public static boolean playRound(PlayerInput playerInput, Player player, int numberOfSides, int numberOfRounds) {
+    public static boolean playRound(PlayerInput playerInput, Player player, int numberOfRounds) {
 
         for (int round = 0; round < numberOfRounds; round++) {
             showRoundStatus(player, round + 1, numberOfRounds);
-            int guess = readGuess(playerInput, numberOfSides);
+            int guess = readGuess(playerInput, player.getNumberOfSides());
             aSingleRound(guess, player);
         }
 
@@ -125,7 +126,7 @@ public class GameStart {
      * @return true if the player has won, false otherwise
      */
     public static boolean checkWinner(Player player) {
-        if (player.getScore() >= 10) {
+        if (player.getScore() >= WINNING_SCORE) {
             System.out.println(
                     "  .      .       .       .       .       .       .       .       .\n" +
                             "    \\  |  /        \\  |  /        \\  |  /        \\  |  /        \\  |  /\n" +
