@@ -28,15 +28,15 @@ Sätt status till **Godkänd** eller **Underkänd** efter att testet har körts.
 
 ### Spelflöde
 
-| ID   | Testfall                      | Indata                        | Förväntat resultat                                     | Status  |
-| ---- | ----------------------------- | ----------------------------- | ------------------------------------------------------ | ------- |
-| T-11 | Begränsat antal rundor        | 1 runda                       | Spelet avslutas efter rundan                           | ✅      |
-| T-12 | Vinst vid 10 poäng            | Nå 10 poäng                   | Vinnarmeddelande visas                                 | ✅      |
-| T-13 | Vinst vid minst 10 poäng      | Nå 10 poäng                   | Vinnarmeddelande visas efter sista rundan              | Ej körd |
-| T-14 | Ogiltigt svar på "Spela igen" | `kanske`, sedan `no`          | Frågan ställs på nytt                                  | ✅      |
-| T-15 | Spela igen                    | `yes` eller `y`               | Ny spelomgång startar                                  | ✅      |
-| T-16 | Avsluta spelet                | `no` eller `n`                | Spelet avslutas                                        | ✅      |
-| T-17 | Fortsätt efter 10 poäng       | Nå 10 poäng före sista rundan | Alla valda rundor spelas innan vinnarmeddelandet visas | Ej körd |
+| ID   | Testfall                      | Indata                        | Förväntat resultat                                     | Status |
+| ---- | ----------------------------- | ----------------------------- | ------------------------------------------------------ | ------ |
+| T-11 | Begränsat antal rundor        | 1 runda                       | Spelet avslutas efter rundan                           | ✅     |
+| T-12 | Vinst vid 10 poäng            | Nå 10 poäng                   | Vinnarmeddelande visas                                 | ✅     |
+| T-13 | Vinst vid minst 10 poäng      | Nå 10 poäng                   | Vinnarmeddelande visas efter sista rundan              | ✅     |
+| T-14 | Ogiltigt svar på "Spela igen" | `kanske`, sedan `no`          | Frågan ställs på nytt                                  | ✅     |
+| T-15 | Spela igen                    | `yes` eller `y`               | Ny spelomgång startar                                  | ✅     |
+| T-16 | Avsluta spelet                | `no` eller `n`                | Spelet avslutas                                        | ✅     |
+| T-17 | Fortsätt efter 10 poäng       | Nå 10 poäng före sista rundan | Alla valda rundor spelas innan vinnarmeddelandet visas | ✅     |
 
 ## Begränsningar
 
